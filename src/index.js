@@ -8,7 +8,6 @@ const run = () => {
 
   api.gameID = local !== undefined ? local : api.createGame('Scory');
 
-  api.getList();
   setRefreshBtn(api);
   setAddBtn(api);
 };
