@@ -1,4 +1,5 @@
 /* eslint-disable prefer-destructuring */
+import { refreshList } from '../frontend/list';
 
 export default class APIHandler {
   constructor() {
@@ -11,7 +12,7 @@ export default class APIHandler {
       {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json;',
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           name: title,
@@ -20,36 +21,44 @@ export default class APIHandler {
     );
 
     const data = await result.json();
-
     this.gameID = data.result.split(' ')[3];
+    this.gameIDtoStorage();
+    this.getList();
   };
 
-  gameIDtoStorage = (gameID) => {
-    const stringy = JSON.stringify({ gameID });
+  setGameId = (gameID) => {
+    this.gameID = gameID;
+  }
+
+  gameIDtoStorage = () => {
+    const stringy = JSON.stringify({ gameID: this.gameID });
     localStorage.setItem('gameID', stringy);
   }
 
   gameIDfromStorage = (key) => {
     const object = JSON.parse(localStorage.getItem(key));
-    return object.gameID;
+    return object?.gameID;
   }
 
-  refreshList = async (gameID) => {
+  getList = async () => {
+    const gameID = this.gameIDfromStorage('gameID');
     const result = await fetch(`https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${gameID}/scores`);
 
-    return result.json();
+    const list = await result.json();
+    refreshList(list.result);
   }
 
-  addScore = async (gameID, name, score) => {
+  addScore = async (user, score) => {
+    const gameID = this.gameIDfromStorage('gameID');
     const result = await fetch(
       `https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${gameID}/scores`,
       {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json;',
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          name,
+          user,
           score,
         }),
       },

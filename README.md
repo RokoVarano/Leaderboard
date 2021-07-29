@@ -6,12 +6,12 @@
 
 ![screenshot](./app_screenshot.png)
 
-Only framework is available for now
-
+Features:
+- API calls using async and fetch
 ## Built With
 
 - Webpack
-- HMTL
+- Javascript
 - Sass
 ## Live Demo
 
@@ -31,7 +31,8 @@ To get a local copy up and running follow these simple example steps.
 ### Install
 - In the cloned project folder, run 'npx webpack serve'
 ### Usage
-- No usable features yet
+- To add a new score, just type a name and a score in the corresponding fields and hit 'Submit'
+- the game ID is saved in localStorage, so that the same game can be referenced multiple times
 ### Run tests
 - No tests yet
 
