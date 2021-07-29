@@ -15,7 +15,7 @@ Features:
 - Sass
 ## Live Demo
 
-Coming soon
+https://rokovarano.github.io/Leaderboard/
 ## Getting Started
 
 **This is an example of how you may give instructions on setting up your project locally.**
