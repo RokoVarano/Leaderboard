@@ -29,7 +29,10 @@ To get a local copy up and running follow these simple example steps.
 ### Setup
 - clone the Repo: https://github.com/RokoVarano/Leaderboard.git
 ### Install
-- In the cloned project folder, run 'npx webpack serve'
+- 
+- In the cloned project folder, run 'npm install'
+- run 'npm run build'
+- run 'npx webpack serve'
 ### Usage
 - To add a new score, just type a name and a score in the corresponding fields and hit 'Submit'
 - Hit 'Refresh' to load the current score list. 
